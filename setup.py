@@ -27,9 +27,9 @@ setup(
     author='No One',
     author_email='noone@nowhere.com',
     install_requires=[
-        'fakesubdepmodule-0'
+        'fakesubdepmodule'
     ],
     dependency_links=[
-        'git@github.com:matt-land/fake_subdep_module.git#egg=fakesubdepmodule-0'
+        'git+https://github.com/matt-land/fake_subdep_module.git#egg=fakesubdepmodule-0'
     ]
 )

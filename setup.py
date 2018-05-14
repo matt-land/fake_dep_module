@@ -1,33 +1,35 @@
 from setuptools import setup
 
-def readme():
-    with open('README.md') as f:
-        return f.read()
+# with open('requirements.txt') as f:
+#     dependency_links = []
+#     install_requires = []
+#     for line in f.read().splitlines():
+#         if 'ssh://' in line:
+#             # make a pip line into setup line
+#             dependency_links.append(line.replace('-e ', '') + '-0')
+#             install_requires.append(line.split('egg=')[1])
+#         else:
+#             install_requires.append(line)
 
-with open('requirements.txt') as f:
-    dependency_links = []
-    install_requires = []
-    for line in f.read().splitlines():
-        if 'ssh://' in line:
-            # make a pip line into setup line
-            #pip line   -e git+ssh://git@gitlab.sparefoot.com:10648/analytics/laketrail.git#egg=laketrail
-            #setup line git+ssh://git@gitlab.sparefoot.com:10648/analytics/laketrail.git#egg=laketrail-0
-            dependency_links.append(line.replace('-e ', '') + '-0')
-            install_requires.append(line.split('egg=')[1])
-        else:
-            install_requires.append(line)
-
+# pip line
+# -e git@github.com:matt-land/fake_subdep_module.git#egg=fakesubdepmodule
+# setup dependency_links list
+# git@github.com:matt-land/fake_subdep_module.git#egg=fakesubdepmodule-0
+# setup install_requires line
+# fakesubdepmodule-0
 
 setup(
-    name='fake_dep_module',
+    name='fakedepmodule',
     py_modules=[''],
-    version='0.0.2',
+    version='0.0.0',
     description='helps test',
-    url='ssh://git@gitlab.sparefoot.com:10648/analytics/helpers.git',
-    author='Matt Land',
-    author_email='mland@sparefoot.com',
-    install_requires=install_requires,
-    test_suite='nose.collector',
-    tests_require=['nose'],
-    dependency_links=dependency_links
+    url='git@github.com:matt-land/fake_dep_module.git',
+    author='No One',
+    author_email='noone@nowhere.com',
+    install_requires=[
+        'fakesubdepmodule-0'
+    ],
+    dependency_links=[
+        'git@github.com:matt-land/fake_subdep_module.git#egg=fakesubdepmodule-0'
+    ]
 )
